@@ -46,7 +46,7 @@ A responsive, minimal, and high-performance Job Board platform named **Quantum**
 - **Apply Now** direct trigger and **Job Details** modal launcher.
 
 #### 🏢 Popular Companies Ecosystem
-- Verified hiring companies: Linear, Stripe, Anthropic, Figma, Notion, Vercel, Datadog, Supabase, OpenAI, and Revolut.
+- Verified hiring companies: Google, Apple, Stackly, Deloitte, Cognizant, TCS, Wipro, Linear, Stripe, Anthropic, Figma, Notion, Vercel, Datadog, Supabase, OpenAI, and Revolut.
 - Company details: Industry, headquarters, employee headcount, Glassdoor rating, culture pillars, and open role count.
 - Direct link to filter jobs by employer.
 
@@ -111,8 +111,8 @@ A responsive, minimal, and high-performance Job Board platform named **Quantum**
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/rohith10ty/quantum-job-board.git
-cd quantum-job-board
+git clone https://github.com/rohith10ty/quantum-jobs.git
+cd quantum-jobs
 ```
 
 ### 2. Install dependencies
