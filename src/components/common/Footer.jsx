@@ -262,13 +262,9 @@ export default function Footer() {
 
         </div>
 
-        {/* Bottom Bar - Tight spacing below company name */}
-        <div className="mt-8 pt-4 border-t border-royal-900/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-royal-400 pb-2">
+        {/* Bottom Bar: Company Name & Copyright Only (Removed "Designed with precision in Royal Blue & Cream") */}
+        <div className="mt-8 pt-4 border-t border-royal-900/80 flex items-center justify-between text-xs text-royal-400 pb-2">
           <p>© 2026 Quantum Technologies Inc. All rights reserved.</p>
-          <div className="flex items-center gap-1 text-cream-300/80">
-            <span>Designed with precision in</span>
-            <span className="text-royal-300 font-semibold">Royal Blue & Cream</span>
-          </div>
         </div>
       </div>
     </footer>

@@ -111,7 +111,7 @@ export default function GlassyLoginModal() {
           {/* 1. Header with Hexagon Symbol ⬢ */}
           <div className="text-center">
             <div className="flex items-center justify-center gap-1.5 mb-1">
-              <span className="text-xl text-[#60A5FA]" aria-hidden="true">⬢</span>
+              <span className="text-2xl text-[#60A5FA]" aria-hidden="true">⬢</span>
               <span className="font-black text-sm tracking-widest text-cream-50 font-sans">
                 QUANTUM
               </span>

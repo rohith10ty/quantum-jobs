@@ -2,23 +2,25 @@ import React from 'react';
 
 export default function Logo({ size = 'md', inverted = false, showTagline = false }) {
   const sizeMap = {
-    sm: { symbol: 'text-xl', text: 'text-lg', badge: 'text-[9px]' },
-    md: { symbol: 'text-2xl', text: 'text-2xl', badge: 'text-[10px]' },
-    lg: { symbol: 'text-3xl', text: 'text-3xl', badge: 'text-xs' },
+    sm: { symbol: 'text-2xl', text: 'text-lg', badge: 'text-[9px]' },
+    md: { symbol: 'text-3xl sm:text-4xl', text: 'text-2xl', badge: 'text-[10px]' },
+    lg: { symbol: 'text-4xl sm:text-5xl', text: 'text-3xl', badge: 'text-xs' },
   };
 
   const { symbol, text, badge } = sizeMap[size] || sizeMap.md;
 
   return (
-    <div className="flex items-center gap-2 select-none group cursor-pointer">
-      {/* Exact Hexagon Symbol ⬢ with Royal Blue Colour */}
+    <div className="flex items-center gap-2.5 select-none group cursor-pointer">
+      {/* Exact Solid Hexagon Symbol ⬢ - Prominent & Big in Royal Blue */}
       <span
-        className={`leading-none transition-transform duration-300 ease-out group-hover:scale-110 ${symbol} ${
+        className={`leading-none transition-transform duration-300 ease-out group-hover:scale-110 shrink-0 ${symbol} ${
           inverted ? 'text-cream-100' : 'text-royal-800'
         }`}
         style={{
           color: inverted ? '#FAF7F0' : '#1E3A8A',
-          filter: inverted ? 'drop-shadow(0 0 8px rgba(250,247,240,0.3))' : 'drop-shadow(0 2px 4px rgba(30,58,138,0.15))'
+          filter: inverted 
+            ? 'drop-shadow(0 0 10px rgba(250,247,240,0.35))' 
+            : 'drop-shadow(0 2px 6px rgba(30,58,138,0.2))'
         }}
         aria-hidden="true"
       >

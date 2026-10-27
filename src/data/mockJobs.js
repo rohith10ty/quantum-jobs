@@ -1,5 +1,269 @@
 export const mockJobs = [
   {
+    id: 'job-google',
+    title: 'Staff AI Infrastructure Systems Engineer (Gemini Core & TPU)',
+    company: 'Google',
+    companyId: 'google',
+    logoInitials: 'GO',
+    badgeColor: 'bg-blue-900 text-white',
+    location: 'Mountain View, CA (Hybrid / Remote)',
+    isRemote: true,
+    jobType: 'Full-time',
+    category: 'software-development',
+    categoryLabel: 'Software Development',
+    experience: 'Lead / Staff (7+ yrs)',
+    experienceLevel: 'lead',
+    salaryMin: 240000,
+    salaryMax: 315000,
+    salaryFormatted: '$240,000 - $315,000 + Google GSUs',
+    postedTime: 'Just now',
+    featured: true,
+    tags: ['C++', 'Distributed Training', 'TPU v5p', 'Kubernetes', 'Gemini'],
+    overview: 'Google is hiring a Staff AI Infrastructure Systems Engineer to architect the next-generation distributed compute fabric accelerating Gemini foundational model pre-training and TPU cluster orchestration.',
+    responsibilities: [
+      'Design high-throughput distributed interconnect protocols across tens of thousands of TPU accelerators.',
+      'Optimize low-level memory bandwidth and network fabric topology to eliminate training bottlenecks.',
+      'Partner directly with Google DeepMind research teams to co-design future frontier neural network architectures.',
+      'Drive system reliability benchmarks and automated fault recovery across continental cloud clusters.'
+    ],
+    requirements: [
+      '7+ years systems programming with C++ and Linux distributed environments.',
+      'Deep experience with high-performance networking (RDMA, InfiniBand, RoCE) and hardware accelerators.',
+      'Demonstrated track record of delivering infrastructure powering frontier LLM training runs.'
+    ],
+    benefits: [
+      'Top-of-market Google GSU equity grant with semi-annual refreshers.',
+      'Comprehensive healthcare, dental, and on-site wellness centers.',
+      'Free gourmet campus dining, barista bars, and electric commuter shuttles.',
+      '401(k) matching up to 50% of the IRS maximum.'
+    ]
+  },
+  {
+    id: 'job-apple',
+    title: 'Senior iOS & System Intelligence Architect',
+    company: 'Apple',
+    companyId: 'apple',
+    logoInitials: 'AP',
+    badgeColor: 'bg-zinc-900 text-white',
+    location: 'Cupertino, CA (Hybrid)',
+    isRemote: false,
+    jobType: 'Full-time',
+    category: 'software-development',
+    categoryLabel: 'Software Development',
+    experience: 'Senior (5+ yrs)',
+    experienceLevel: 'senior',
+    salaryMin: 210000,
+    salaryMax: 275000,
+    salaryFormatted: '$210,000 - $275,000 + RSUs',
+    postedTime: '1 hour ago',
+    featured: true,
+    tags: ['Swift', 'SwiftUI', 'Apple Silicon', 'CoreML', 'Metal'],
+    overview: 'Join the team building Apple Intelligence on macOS, iOS, and iPadOS. You will design on-device neural model inference pipelines with hardware-accelerated privacy guarantees.',
+    responsibilities: [
+      'Architect on-device Foundation Model execution leveraging Neural Engine and Unified Memory on Apple Silicon.',
+      'Craft fluid, delightful user experiences in Swift and SwiftUI with 120Hz ProMotion responsiveness.',
+      'Enforce zero-knowledge privacy standards ensuring user prompt data never leaves device boundaries.'
+    ],
+    requirements: [
+      '5+ years professional experience building production iOS or macOS systems in modern Swift.',
+      'Strong grasp of computer architecture, Metal shaders, CoreML, and memory optimization.',
+      'Uncompromising attention to typography, interaction feel, and fluid haptics.'
+    ],
+    benefits: [
+      'Generous Apple RSU equity package.',
+      'Apple Product Purchase Plan discounts for family and friends.',
+      'Full healthcare, retirement match, and wellness subsidies.',
+      'Tuition assistance and continuous learning programs.'
+    ]
+  },
+  {
+    id: 'job-stackly',
+    title: 'Principal Full-Stack Engineer (React, Rust & Edge Compute)',
+    company: 'Stackly',
+    companyId: 'stackly',
+    logoInitials: 'SK',
+    badgeColor: 'bg-indigo-950 text-indigo-200',
+    location: 'San Francisco, CA / Remote (Worldwide)',
+    isRemote: true,
+    jobType: 'Full-time',
+    category: 'software-development',
+    categoryLabel: 'Software Development',
+    experience: 'Senior (5+ yrs)',
+    experienceLevel: 'senior',
+    salaryMin: 180000,
+    salaryMax: 230000,
+    salaryFormatted: '$180,000 - $230,000 + 0.25% Equity',
+    postedTime: '2 hours ago',
+    featured: true,
+    tags: ['React', 'TypeScript', 'Rust', 'WebAssembly', 'Docker'],
+    overview: 'Stackly is building instantaneous cloud development environments. Help us build the browser-native IDE runtime and sub-second container booting engine.',
+    responsibilities: [
+      'Architect WebAssembly-compiled terminal and container runtimes running seamlessly inside browser clients.',
+      'Build desktop-grade React interfaces with canvas rendering and real-time multiplayer cursor sync.',
+      'Write high-performance Rust daemons for edge snapshotting and network tunnels.'
+    ],
+    requirements: [
+      '5+ years professional frontend & backend experience with React, TypeScript, and Rust or Go.',
+      'Passion for developer tooling, keyboard ergonomics, and sub-50ms interaction latencies.',
+      'Experience with Linux cgroups, namespaces, and WebSockets.'
+    ],
+    benefits: [
+      '100% remote work flexibility worldwide.',
+      '$4,000 home office and hardware upgrade budget.',
+      'Unlimited PTO with mandatory annual minimum.',
+      'Annual team gatherings in Kyoto, Lisbon, and Vancouver.'
+    ]
+  },
+  {
+    id: 'job-deloitte',
+    title: 'Senior AI Strategy & Enterprise Transformation Consultant',
+    company: 'Deloitte',
+    companyId: 'deloitte',
+    logoInitials: 'DL',
+    badgeColor: 'bg-slate-900 text-emerald-400',
+    location: 'New York, NY (Hybrid)',
+    isRemote: true,
+    jobType: 'Full-time',
+    category: 'data-science',
+    categoryLabel: 'Data Science & AI',
+    experience: 'Senior (5+ yrs)',
+    experienceLevel: 'senior',
+    salaryMin: 175000,
+    salaryMax: 225000,
+    salaryFormatted: '$175,000 - $225,000 + Annual Bonus',
+    postedTime: '3 hours ago',
+    featured: true,
+    tags: ['GenAI Strategy', 'Enterprise Architecture', 'Cloud Migration', 'Advisory'],
+    overview: 'Advise Fortune 100 C-suite executives on generative AI adoption, data modernization, and cloud governance frameworks across banking, healthcare, and retail sectors.',
+    responsibilities: [
+      'Lead AI maturity assessments and develop multi-year enterprise transformation roadmaps.',
+      'Advise CIOs and CTOs on LLM governance, model fine-tuning architecture, and cloud security.',
+      'Direct cross-functional teams of data scientists and solution architects to deliver client pilot solutions.'
+    ],
+    requirements: [
+      '5+ years in management consulting or enterprise technology leadership.',
+      'Strong technical grounding in AI/ML solutions, cloud architectures (AWS/Azure/GCP), and data pipelines.',
+      'Proven ability to present complex technical paradigms to board-level stakeholders.'
+    ],
+    benefits: [
+      'Comprehensive medical, dental, and vision insurance.',
+      'Performance bonus up to 25% of base compensation.',
+      'Generous parental leave and continuous executive executive training.',
+      'Dedicated wellbeing days and flexible hybrid work model.'
+    ]
+  },
+  {
+    id: 'job-cognizant',
+    title: 'Lead Cloud Solutions Architect (AWS & Microservices)',
+    company: 'Cognizant',
+    companyId: 'cognizant',
+    logoInitials: 'CT',
+    badgeColor: 'bg-blue-950 text-sky-200',
+    location: 'Dallas, TX / Remote',
+    isRemote: true,
+    jobType: 'Full-time',
+    category: 'devops-cloud',
+    categoryLabel: 'Cloud & DevOps',
+    experience: 'Lead / Staff (7+ yrs)',
+    experienceLevel: 'lead',
+    salaryMin: 165000,
+    salaryMax: 205000,
+    salaryFormatted: '$165,000 - $205,000 + Incentive Bonus',
+    postedTime: '5 hours ago',
+    featured: false,
+    tags: ['AWS', 'Kubernetes', 'Java Spring Boot', 'Microservices', 'Terraform'],
+    overview: 'Drive enterprise cloud modernization programs for premier global clients migrating legacy monoliths to event-driven cloud native microservices on AWS.',
+    responsibilities: [
+      'Architect scalable, highly-resilient microservices systems processing millions of daily financial transactions.',
+      'Establish Infrastructure as Code (IaC) governance using Terraform and GitOps pipelines.',
+      'Mentor senior engineers and conduct architectural reviews across globally distributed agile teams.'
+    ],
+    requirements: [
+      '7+ years software engineering and cloud architecture experience.',
+      'AWS Solutions Architect Professional certification or equivalent deep enterprise experience.',
+      'Strong hands-on background in Java/Spring Boot or Node.js and distributed databases.'
+    ],
+    benefits: [
+      'Comprehensive health coverage and wellness stipends.',
+      'Annual performance bonuses and certification sponsorship.',
+      'Flexible remote schedule with generous paid time off.'
+    ]
+  },
+  {
+    id: 'job-tcs',
+    title: 'Senior Enterprise Java & Distributed Systems Lead',
+    company: 'Tata Consultancy Services',
+    companyId: 'tcs',
+    logoInitials: 'TC',
+    badgeColor: 'bg-cyan-950 text-cyan-200',
+    location: 'Edison, NJ (Hybrid / Remote)',
+    isRemote: true,
+    jobType: 'Full-time',
+    category: 'software-development',
+    categoryLabel: 'Software Development',
+    experience: 'Senior (5+ yrs)',
+    experienceLevel: 'senior',
+    salaryMin: 150000,
+    salaryMax: 190000,
+    salaryFormatted: '$150,000 - $190,000 + Benefits',
+    postedTime: '6 hours ago',
+    featured: false,
+    tags: ['Java 21', 'Kafka', 'Spring Cloud', 'Oracle DB', 'High Availability'],
+    overview: 'Lead the modernization of mission-critical banking ledger platforms at TCS, designing fault-tolerant distributed transaction systems with five-nines uptime.',
+    responsibilities: [
+      'Design event-driven data streaming pipelines handling millions of events/sec via Apache Kafka.',
+      'Refactor monolithic core banking components into decoupled containerized microservices.',
+      'Ensure strict regulatory compliance, encryption at rest/transit, and SOC-2 standard controls.'
+    ],
+    requirements: [
+      '5+ years enterprise Java (Java 17/21, Spring Boot, Spring Cloud).',
+      'Solid command of event sourcing, distributed caching (Redis), and SQL/NoSQL tuning.',
+      'Strong team leadership and agile sprint execution.'
+    ],
+    benefits: [
+      'Full healthcare and dental insurance plans.',
+      '401(k) retirement plan with corporate match.',
+      'Paid annual vacation and sick leave.'
+    ]
+  },
+  {
+    id: 'job-wipro',
+    title: 'Principal Cloud DevOps & Site Reliability Engineer',
+    company: 'Wipro',
+    companyId: 'wipro',
+    logoInitials: 'WP',
+    badgeColor: 'bg-emerald-950 text-emerald-200',
+    location: 'San Jose, CA (Hybrid)',
+    isRemote: true,
+    jobType: 'Full-time',
+    category: 'devops-cloud',
+    categoryLabel: 'Cloud & DevOps',
+    experience: 'Senior (5+ yrs)',
+    experienceLevel: 'senior',
+    salaryMin: 160000,
+    salaryMax: 200000,
+    salaryFormatted: '$160,000 - $200,000 + Equity & Bonus',
+    postedTime: '1 day ago',
+    featured: false,
+    tags: ['Azure DevOps', 'Kubernetes', 'CI/CD', 'Python', 'Observability'],
+    overview: 'Architect multi-cloud deployment automation, observability meshes, and zero-downtime release pipelines across Wipro’s premier enterprise client portfolio.',
+    responsibilities: [
+      'Automate large-scale Kubernetes cluster provisioning across Azure and multi-cloud environments.',
+      'Implement unified observability stacks (Prometheus, Grafana, OpenTelemetry).',
+      'Conduct automated resilience chaos testing to eliminate single points of operational failure.'
+    ],
+    requirements: [
+      '5+ years dedicated SRE or DevOps experience with container orchestration and cloud networks.',
+      'Strong scripting skills in Python, Go, or Bash for automation.',
+      'Proven track record supporting mission-critical 24x7 production environments.'
+    ],
+    benefits: [
+      'Comprehensive medical, life, and vision coverage.',
+      'Competitive compensation with annual merit review.',
+      'Flexible hybrid schedule and paid educational leave.'
+    ]
+  },
+  {
     id: 'job-1',
     title: 'Senior Full-Stack Engineer (React & Go)',
     company: 'Linear',
@@ -159,46 +423,6 @@ export const mockJobs = [
     ]
   },
   {
-    id: 'job-5',
-    title: 'Lead Machine Learning Engineer (Inference)',
-    company: 'OpenAI',
-    companyId: 'openai',
-    logoInitials: 'OA',
-    badgeColor: 'bg-teal-950 text-teal-100',
-    location: 'San Francisco, CA',
-    isRemote: false,
-    jobType: 'Full-time',
-    category: 'data-science',
-    categoryLabel: 'Data Science & AI',
-    experience: 'Lead / Staff (7+ yrs)',
-    experienceLevel: 'lead',
-    salaryMin: 310000,
-    salaryMax: 420000,
-    salaryFormatted: '$310,000 - $420,000 + Equity & Profit Participation',
-    postedTime: '1 day ago',
-    featured: true,
-    tags: ['CUDA', 'C++', 'PyTorch', 'vLLM', 'Triton', 'GPU Kernel Opt'],
-    overview: 'Join the team building ultra-low-latency inference engines serving over 200 million weekly active ChatGPT and enterprise API queries.',
-    responsibilities: [
-      'Write custom CUDA and Triton kernels to squeeze maximal throughput from modern GPU clusters.',
-      'Optimize speculative decoding, KV-cache quantization, and memory-bandwidth bottlenecks.',
-      'Collaborate with research scientists to rapidly deploy frontier multimodal architectures into production.',
-      'Lead infrastructure incident drills and reliability benchmarks under extreme load spikes.'
-    ],
-    requirements: [
-      '7+ years systems programming with C++ and CUDA.',
-      'Demonstrated expertise in deep learning model inference (FlashAttention, TensorRT-LLM, vLLM).',
-      'Deep understanding of modern GPU architecture (Hopper, Blackwell, HBM3 bandwidth).',
-      'BS, MS, or PhD in Computer Science or Electrical Engineering.'
-    ],
-    benefits: [
-      'Top-of-market compensation with profit participation unit program.',
-      'Free gourmet breakfast, lunch, and dinner on campus.',
-      'Comprehensive on-site wellness and executive coaching.',
-      'Commuter shuttles and electric vehicle charging.'
-    ]
-  },
-  {
     id: 'job-6',
     title: 'VP of Global Product Marketing',
     company: 'Notion',
@@ -238,199 +462,6 @@ export const mockJobs = [
     ]
   },
   {
-    id: 'job-7',
-    title: 'Staff Site Reliability Engineer (Edge & Cloud)',
-    company: 'Datadog',
-    companyId: 'datadog',
-    logoInitials: 'DD',
-    badgeColor: 'bg-purple-950 text-purple-100',
-    location: 'New York, NY (Hybrid)',
-    isRemote: true,
-    jobType: 'Full-time',
-    category: 'devops-cloud',
-    categoryLabel: 'Cloud & DevOps',
-    experience: 'Senior (5+ yrs)',
-    experienceLevel: 'senior',
-    salaryMin: 185000,
-    salaryMax: 235000,
-    salaryFormatted: '$185,000 - $235,000 + RSUs',
-    postedTime: '2 days ago',
-    featured: false,
-    tags: ['Kubernetes', 'Terraform', 'Go', 'AWS', 'Multi-Region SRE'],
-    overview: 'Ensure the resilience of a platform ingesting trillions of telemetry data points daily. You will build automation and infrastructure that never sleeps.',
-    responsibilities: [
-      'Automate cloud orchestration across thousands of multi-cloud Kubernetes clusters.',
-      'Design Chaos Engineering experiments to validate edge failover reliability.',
-      'Drive incident post-mortems and engineer blameless systemic mitigations.',
-      'Optimize compute infrastructure to reduce carbon footprint and operational spend.'
-    ],
-    requirements: [
-      '5+ years in SRE or Platform Engineering handling massive-scale public cloud footprints.',
-      'Expert level with Linux internals, eBPF, TCP/IP networking, and container runtimes.',
-      'Production mastery with Go or Python for infrastructure automation.'
-    ],
-    benefits: [
-      'Generous RSU equity package with annual refreshers.',
-      'Comprehensive 401k match.',
-      'Annual learning budget of $3,500.',
-      'Flexible hybrid work policy.'
-    ]
-  },
-  {
-    id: 'job-8',
-    title: 'Senior Brand & Design Systems Lead',
-    company: 'Linear',
-    companyId: 'linear',
-    logoInitials: 'LN',
-    badgeColor: 'bg-indigo-900 text-indigo-100',
-    location: 'San Francisco, CA / Remote',
-    isRemote: true,
-    jobType: 'Full-time',
-    category: 'ui-ux-design',
-    categoryLabel: 'UI/UX Design',
-    experience: 'Senior (5+ yrs)',
-    experienceLevel: 'senior',
-    salaryMin: 165000,
-    salaryMax: 205000,
-    salaryFormatted: '$165,000 - $205,000 + Equity',
-    postedTime: '3 days ago',
-    featured: true,
-    tags: ['Brand Design', 'Typography', '3D / Motion', 'Creative Direction'],
-    overview: 'Own the visual soul and aesthetic standard of Linear across all brand touchpoints, product launches, physical merch, and web marketing.',
-    responsibilities: [
-      'Establish the iconic visual design language for upcoming product campaigns.',
-      'Craft stunning interactive web experiences with custom shaders and WebGL accents.',
-      'Collaborate with engineering to implement pixel-perfect CSS and motion design.',
-      'Elevate our editorial storytelling and release notes.'
-    ],
-    requirements: [
-      'Exceptional portfolio showcasing uncompromising graphic design, typography, and motion.',
-      'Hands-on expertise with Figma, Blender/Cinema 4D, and Adobe Creative Suite.',
-      'Understanding of modern web rendering and frontend implementation.'
-    ],
-    benefits: [
-      'Full health, dental, and vision insurance.',
-      'Home office ergonomic stipend.',
-      'Remote flexibility worldwide.'
-    ]
-  },
-  {
-    id: 'job-9',
-    title: 'Senior Financial Planning & Strategy Manager',
-    company: 'Stripe',
-    companyId: 'stripe',
-    logoInitials: 'ST',
-    badgeColor: 'bg-blue-900 text-blue-100',
-    location: 'San Francisco, CA',
-    isRemote: false,
-    jobType: 'Full-time',
-    category: 'finance',
-    categoryLabel: 'Finance & Strategy',
-    experience: 'Senior (5+ yrs)',
-    experienceLevel: 'senior',
-    salaryMin: 160000,
-    salaryMax: 210000,
-    salaryFormatted: '$160,000 - $210,000 + Equity',
-    postedTime: '3 days ago',
-    featured: false,
-    tags: ['Corporate FP&A', 'Fintech', 'Financial Modeling', 'Unit Economics', 'SQL'],
-    overview: 'Stripe is looking for a strategic finance partner to steer our revenue planning, margins, and capital allocation across global payment products.',
-    responsibilities: [
-      'Lead quarterly financial modeling, long-range forecasting, and scenario analyses.',
-      'Partner directly with General Managers to optimize take rates and interchange dynamics.',
-      'Deliver board-ready financial briefings to the CFO and executive committee.',
-      'Automate financial reporting pipelines using SQL, dbt, and financial engines.'
-    ],
-    requirements: [
-      '5+ years in investment banking, management consulting, or corporate FP&A at high-growth tech firms.',
-      'Mastery of dynamic financial modeling in Excel/Sheets, with strong SQL proficiency.',
-      'Demonstrated ability to influence cross-functional executives with data.'
-    ],
-    benefits: [
-      'Competitive compensation & equity.',
-      'Comprehensive healthcare.',
-      'Parental leave & fertility support.',
-      'Catered meals and commuter benefits.'
-    ]
-  },
-  {
-    id: 'job-10',
-    title: 'Head of Executive & Tech Talent Acquisition',
-    company: 'Anthropic',
-    companyId: 'anthropic',
-    logoInitials: 'AN',
-    badgeColor: 'bg-amber-950 text-amber-100',
-    location: 'San Francisco, CA (Hybrid)',
-    isRemote: true,
-    jobType: 'Full-time',
-    category: 'human-resources',
-    categoryLabel: 'Human Resources',
-    experience: 'Lead / Staff (7+ yrs)',
-    experienceLevel: 'lead',
-    salaryMin: 195000,
-    salaryMax: 260000,
-    salaryFormatted: '$195,000 - $260,000 + Equity',
-    postedTime: '4 days ago',
-    featured: false,
-    tags: ['Executive Search', 'AI Recruiting', 'Talent Strategy', 'Candidate Experience'],
-    overview: 'Lead the recruitment function that identifies and attracts the world’s most brilliant AI researchers, safety scientists, and infrastructure leaders.',
-    responsibilities: [
-      'Manage full-cycle executive and principal engineering searches.',
-      'Build a thoughtful, high-dignity candidate experience for world-class researchers.',
-      'Design equitable calibration pipelines and competitive compensation benchmarks.',
-      'Direct our university and national laboratory partnership programs.'
-    ],
-    requirements: [
-      '7+ years recruiting elite technical talent in AI/ML, distributed systems, or research laboratories.',
-      'Deep network across top academic labs and tech research hubs.',
-      'High emotional intelligence and strategic advisory capability.'
-    ],
-    benefits: [
-      'Top-tier healthcare & wellness benefits.',
-      'Significant equity stake in an AI market leader.',
-      'Flexible hybrid schedule.'
-    ]
-  },
-  {
-    id: 'job-11',
-    title: 'Senior Backend Engineer (Rust & Postgres)',
-    company: 'Supabase',
-    companyId: 'supabase',
-    logoInitials: 'SB',
-    badgeColor: 'bg-emerald-950 text-emerald-100',
-    location: 'Remote (Worldwide)',
-    isRemote: true,
-    jobType: 'Full-time',
-    category: 'software-development',
-    categoryLabel: 'Software Development',
-    experience: 'Senior (5+ yrs)',
-    experienceLevel: 'senior',
-    salaryMin: 170000,
-    salaryMax: 215000,
-    salaryFormatted: '$170,000 - $215,000 + Open Source Equity',
-    postedTime: '4 days ago',
-    featured: true,
-    tags: ['Rust', 'PostgreSQL', 'Elixir', 'Distributed Systems', 'Open Source'],
-    overview: 'Supabase is hiring a Senior Backend Engineer to write high-throughput Rust services interfacing directly with PostgreSQL replication and WAL streaming.',
-    responsibilities: [
-      'Develop real-time connection pooling and replication engines written in Rust.',
-      'Contribute to open source extensions and optimize query latency for 1M+ active databases.',
-      'Diagnose low-level Linux performance bottlenecks under heavy I/O workloads.',
-      'Engage with the developer community on GitHub and Discord.'
-    ],
-    requirements: [
-      '5+ years professional experience with Rust or C/C++ in systems environments.',
-      'Strong grasp of PostgreSQL internals, locking models, and indexing strategies.',
-      'Prior contributions to open source projects are highly valued.'
-    ],
-    benefits: [
-      '100% remote anywhere in the world.',
-      '$3,000 home office budget.',
-      'Co-working pass reimbursement.',
-      'Annual team offsites across Europe, Asia, and Americas.'
-    ]
-  },
-  {
     id: 'job-12',
     title: 'Lead Technical Product Manager (Edge Platform)',
     company: 'Vercel',
@@ -467,154 +498,6 @@ export const mockJobs = [
       'Generous equity compensation.',
       'Full healthcare coverage.',
       'Stipends for hardware, wellness, and continuous learning.'
-    ]
-  },
-  {
-    id: 'job-13',
-    title: 'Senior Product Designer (Mobile & Tablet)',
-    company: 'Notion',
-    companyId: 'notion',
-    logoInitials: 'NT',
-    badgeColor: 'bg-stone-900 text-stone-100',
-    location: 'San Francisco, CA (Hybrid)',
-    isRemote: true,
-    jobType: 'Full-time',
-    category: 'ui-ux-design',
-    categoryLabel: 'UI/UX Design',
-    experience: 'Mid-Level (3+ yrs)',
-    experienceLevel: 'mid',
-    salaryMin: 145000,
-    salaryMax: 185000,
-    salaryFormatted: '$145,000 - $185,000 + Equity',
-    postedTime: '5 days ago',
-    featured: false,
-    tags: ['Mobile UX', 'iOS', 'Android', 'Figma', 'Micro-interactions'],
-    overview: 'Reinvent the mobile productivity experience. Design gestures, mobile-first block editing, and quick capture workflows on iOS and Android.',
-    responsibilities: [
-      'Translate desktop-dense document capabilities into delightful mobile experiences.',
-      'Prototype mobile-native gestures, haptic feedback, and offline sync UI.',
-      'Work alongside iOS and Android engineers to polish transition states.'
-    ],
-    requirements: [
-      '3+ years focusing on consumer or productivity mobile applications.',
-      'Strong portfolio demonstrating nuanced mobile UI and prototyping abilities.',
-      'Deep appreciation for minimal typography and distraction-free software.'
-    ],
-    benefits: [
-      'Comprehensive medical and mental health.',
-      'Annual travel reimbursement.',
-      'Home office allowance.'
-    ]
-  },
-  {
-    id: 'job-14',
-    title: 'Director of Treasury & Capital Markets',
-    company: 'Revolut',
-    companyId: 'revolut',
-    logoInitials: 'RV',
-    badgeColor: 'bg-sky-950 text-sky-100',
-    location: 'London, UK / Remote',
-    isRemote: true,
-    jobType: 'Full-time',
-    category: 'finance',
-    categoryLabel: 'Finance & Strategy',
-    experience: 'Executive / Principal (10+ yrs)',
-    experienceLevel: 'executive',
-    salaryMin: 220000,
-    salaryMax: 300000,
-    salaryFormatted: '£180,000 - £240,000 ($230k - $305k) + Equity',
-    postedTime: '6 days ago',
-    featured: false,
-    tags: ['Treasury', 'Liquidity Management', 'FX Markets', 'Regulatory Capital'],
-    overview: 'Lead Revolut’s global treasury operations, multi-currency liquidity risk management, and regulatory balance sheet optimization across multiple banking licenses.',
-    responsibilities: [
-      'Manage $20B+ across global liquidity portfolios, FX hedging, and interest rate risks.',
-      'Formulate ALM strategies compliant with PRA, ECB, and global banking authorities.',
-      'Lead a team of quantitative treasury analysts and currency traders.'
-    ],
-    requirements: [
-      '10+ years senior treasury management at a tier-1 bank or major fintech institution.',
-      'Deep technical mastery of FX derivatives, interest rate risk, and stress testing models.',
-      'Proven record managing multi-billion balance sheet liquidity.'
-    ],
-    benefits: [
-      'Significant equity grant in Europe’s highest-valued fintech.',
-      'Private health insurance for candidate and family.',
-      'Flexible global mobility program.'
-    ]
-  },
-  {
-    id: 'job-15',
-    title: 'Frontend Engineer (Design Systems & Web)',
-    company: 'Linear',
-    companyId: 'linear',
-    logoInitials: 'LN',
-    badgeColor: 'bg-indigo-900 text-indigo-100',
-    location: 'Remote (Worldwide)',
-    isRemote: true,
-    jobType: 'Full-time',
-    category: 'software-development',
-    categoryLabel: 'Software Development',
-    experience: 'Mid-Level (3+ yrs)',
-    experienceLevel: 'mid',
-    salaryMin: 135000,
-    salaryMax: 170000,
-    salaryFormatted: '$135,000 - $170,000 + Equity',
-    postedTime: '1 week ago',
-    featured: false,
-    tags: ['React', 'TypeScript', 'CSS Architecture', 'Accessibility', 'Motion'],
-    overview: 'Join Linear to build component primitives that make software feel like magic. You will focus on interaction polish, accessibility, and high performance.',
-    responsibilities: [
-      'Build reusable UI components with uncompromising attention to keyboard navigation.',
-      'Write robust unit and visual regression test suites.',
-      'Collaborate directly with designers to refine token libraries.'
-    ],
-    requirements: [
-      '3+ years professional frontend engineering with React & TypeScript.',
-      'Strong eye for visual rhythm, spacing, and transition timing curves.',
-      'Careful consideration for accessibility and cross-browser quirks.'
-    ],
-    benefits: [
-      '100% remote anywhere.',
-      'Top-tier health coverage.',
-      'All equipment provided (MacBook Pro + Studio Display).'
-    ]
-  },
-  {
-    id: 'job-16',
-    title: 'Junior Cloud Infrastructure Associate',
-    company: 'Datadog',
-    companyId: 'datadog',
-    logoInitials: 'DD',
-    badgeColor: 'bg-purple-950 text-purple-100',
-    location: 'New York, NY',
-    isRemote: false,
-    jobType: 'Full-time',
-    category: 'devops-cloud',
-    categoryLabel: 'Cloud & DevOps',
-    experience: 'Entry-Level (1-2 yrs)',
-    experienceLevel: 'entry',
-    salaryMin: 95000,
-    salaryMax: 125000,
-    salaryFormatted: '$95,000 - $125,000 + Equity',
-    postedTime: '1 week ago',
-    featured: false,
-    tags: ['Linux', 'Python', 'AWS', 'Docker', 'Networking'],
-    overview: 'Kickstart your career at Datadog assisting senior engineers in managing cloud infrastructure pipelines, continuous delivery, and system health checks.',
-    responsibilities: [
-      'Maintain automation scripts for server provisioning and alert dispatching.',
-      'Assist in troubleshooting build pipelines and Docker image registries.',
-      'Document operational playbooks and runbooks.'
-    ],
-    requirements: [
-      'Degree in Computer Science or demonstrable personal cloud engineering projects.',
-      'Solid command line literacy (Linux/Unix, Bash, Git).',
-      'Eager learner with strong problem-solving initiative.'
-    ],
-    benefits: [
-      'Mentorship program with principal SRE engineers.',
-      'Structured promotion tracks.',
-      'Comprehensive health coverage.'
     ]
   }
 ];

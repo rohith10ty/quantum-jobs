@@ -9,7 +9,7 @@ const ROHITH_NAIDU_USER = {
   email: 'rohithnaidu.com',
   title: 'Senior Frontend Architect',
   location: 'San Francisco, CA (Hybrid)',
-  avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=256&q=80',
+  avatar: '/profile.jpg',
   bio: 'Specializing in design systems, React 19, web performance, and modern executive software. 7+ years delivering world-class client architectures.',
   skills: ['React', 'TypeScript', 'Tailwind CSS', 'Design Systems', 'Performance', 'Next.js', 'GraphQL'],
   resumeName: 'Rohith_Naidu_Senior_Architect_CV.pdf',
@@ -60,10 +60,22 @@ export function AppProvider({ children }) {
     return sessionStorage.getItem('quantum_auth_session') === 'true';
   });
 
-  // User state
+  // User state - ensure Rohith's real photo is always used
   const [user, setUser] = useState(() => {
     const saved = localStorage.getItem('quantum_user');
-    return saved ? JSON.parse(saved) : ROHITH_NAIDU_USER;
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        return {
+          ...parsed,
+          name: 'Rohith Naidu',
+          avatar: '/profile.jpg',
+        };
+      } catch (e) {
+        return ROHITH_NAIDU_USER;
+      }
+    }
+    return ROHITH_NAIDU_USER;
   });
 
   // Saved Jobs
@@ -122,6 +134,7 @@ export function AppProvider({ children }) {
   const loginWithEmail = (enteredEmail = 'rohithnaidu.com') => {
     const updatedUser = {
       ...ROHITH_NAIDU_USER,
+      avatar: '/profile.jpg',
       email: enteredEmail
     };
     setUser(updatedUser);
