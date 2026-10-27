@@ -10,15 +10,17 @@ export default function FeaturedJobsSection() {
 
   const filterTabs = [
     { id: 'all', label: 'All Featured' },
-    { id: 'software-development', label: 'Software' },
+    { id: 'india', label: 'India Tech (₹ LPA)' },
+    { id: 'global', label: 'UK & US Roles' },
     { id: 'data-science', label: 'AI & Data' },
-    { id: 'ui-ux-design', label: 'UI/UX Design' },
     { id: 'remote', label: 'Remote Only' },
   ];
 
   const featuredJobs = mockJobs.filter((job) => {
     if (!job.featured) return false;
     if (activeTab === 'all') return true;
+    if (activeTab === 'india') return job.location.includes('India');
+    if (activeTab === 'global') return job.location.includes('United Kingdom') || job.location.includes('United States') || job.location.includes('London');
     if (activeTab === 'remote') return job.isRemote;
     return job.category === activeTab;
   });

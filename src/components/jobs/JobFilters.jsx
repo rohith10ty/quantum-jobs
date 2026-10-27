@@ -31,11 +31,11 @@ export default function JobFilters() {
   ];
 
   const salaryOptions = [
-    { label: 'All Salaries', min: 0 },
-    { label: '$100k+ / year', min: 100000 },
-    { label: '$150k+ / year', min: 150000 },
-    { label: '$200k+ / year', min: 200000 },
-    { label: '$250k+ / year', min: 250000 },
+    { label: 'All Compensation Bands', min: 0 },
+    { label: '₹20+ LPA', min: 20 },
+    { label: '₹35+ LPA', min: 35 },
+    { label: '₹50+ LPA', min: 50 },
+    { label: '₹75+ LPA / Global Tier', min: 75 },
   ];
 
   const handleJobTypeToggle = (typeId) => {
@@ -92,8 +92,8 @@ export default function JobFilters() {
       {/* Remote Only Toggle */}
       <div className="flex items-center justify-between p-3 rounded-xl bg-cream-100 border border-cream-200">
         <div className="space-y-0.5">
-          <span className="text-xs font-bold text-royal-950 block">Remote Opportunities Only</span>
-          <span className="text-[11px] text-royal-700/70 block">Worldwide & US-Remote</span>
+          <span className="text-xs font-bold text-royal-950 block">Remote Roles Only</span>
+          <span className="text-[11px] text-royal-700/70 block">India, UK & US Remote</span>
         </div>
         <button
           type="button"
@@ -190,10 +190,10 @@ export default function JobFilters() {
         </div>
       </div>
 
-      {/* Salary Floor Filter */}
+      {/* Salary Floor Filter in INR */}
       <div className="space-y-2">
         <label className="text-xs font-bold text-royal-950 uppercase tracking-wider block">
-          Minimum Base Salary
+          Minimum Compensation
         </label>
         <div className="grid grid-cols-1 gap-1.5">
           {salaryOptions.map((opt, idx) => {

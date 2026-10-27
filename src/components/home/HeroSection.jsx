@@ -23,11 +23,12 @@ export default function HeroSection() {
   };
 
   const trendingTags = [
+    { label: 'Bengaluru', query: '', location: 'Bengaluru' },
+    { label: 'Hyderabad', query: '', location: 'Hyderabad' },
     { label: 'React / Next.js', query: 'React' },
     { label: 'AI & LLMs', query: 'LLMs' },
-    { label: 'Design Systems', query: 'Design Systems' },
-    { label: 'Distributed Systems', query: 'Distributed' },
-    { label: 'Remote Only', query: '', location: 'Remote' },
+    { label: 'UK (London)', query: '', location: 'London' },
+    { label: 'US Remote', query: '', location: 'United States' },
   ];
 
   const handleTagClick = (tag) => {
@@ -68,12 +69,12 @@ export default function HeroSection() {
           {/* Top Pill / Badge */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cream-50 border border-cream-300 shadow-xs text-xs font-semibold text-royal-900 animate-in fade-in duration-500">
             <span className="flex h-2 w-2 rounded-full bg-royal-700 animate-ping" />
-            <span className="text-royal-800 font-bold">Quantum Career Index</span>
+            <span className="text-royal-800 font-bold">Quantum India & Global Index</span>
             <span className="text-cream-400">|</span>
-            <span>1,200+ Verified Roles Added This Week</span>
+            <span>1,200+ Verified Roles Across India, UK & US</span>
           </div>
 
-          {/* Main Headline - Little bit larger and commanding, without decorative underline */}
+          {/* Main Headline */}
           <h1 className="text-4xl sm:text-5xl lg:text-[52px] font-extrabold text-royal-950 tracking-tight leading-[1.14]">
             Where visionary talent meets{' '}
             <span className="text-royal-800">
@@ -84,7 +85,7 @@ export default function HeroSection() {
 
           {/* Subtitle */}
           <p className="text-sm sm:text-base text-royal-900/75 leading-relaxed font-normal max-w-xl mx-auto">
-            Curated executive & engineering roles with verified compensation and direct founder access.
+            Curated executive & engineering roles with transparent packages in ₹ INR, direct founder access, and global mobility.
           </p>
 
           {/* Hero Search Box */}
@@ -115,7 +116,7 @@ export default function HeroSection() {
                   type="text"
                   value={localLocation}
                   onChange={(e) => setLocalLocation(e.target.value)}
-                  placeholder="Location or 'Remote'..."
+                  placeholder="Location (e.g. Bengaluru, London, US)..."
                   className="w-full bg-transparent text-xs sm:text-sm text-royal-950 placeholder-royal-800/40 focus:outline-none font-medium"
                 />
               </div>
@@ -130,7 +131,7 @@ export default function HeroSection() {
               </button>
             </form>
 
-            {/* Trending Quick Tags - Prominently Displayed Above the Bottom Viewport */}
+            {/* Trending Quick Tags */}
             <div className="flex flex-wrap items-center justify-center gap-2 mt-4 text-xs">
               <span className="text-royal-800 font-bold flex items-center gap-1 text-xs">
                 <TrendingUp className="w-3.5 h-3.5 text-royal-700" />
@@ -148,7 +149,7 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Platform Proof Metrics */}
+          {/* Platform Proof Metrics in ₹ Rupees */}
           <div className="pt-4 grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-5 max-w-2xl mx-auto border-t border-cream-300/50 mt-5">
             <div className="p-1.5 text-center">
               <p className="text-xl sm:text-2xl font-extrabold text-royal-950">4,850+</p>
@@ -159,8 +160,8 @@ export default function HeroSection() {
               <p className="text-[11px] text-royal-800/70 font-medium">Top Companies</p>
             </div>
             <div className="p-1.5 text-center">
-              <p className="text-xl sm:text-2xl font-extrabold text-royal-950">$195k</p>
-              <p className="text-[11px] text-royal-800/70 font-medium">Avg Tech Salary</p>
+              <p className="text-xl sm:text-2xl font-extrabold text-royal-950">₹38 LPA</p>
+              <p className="text-[11px] text-royal-800/70 font-medium">Avg Tech Package</p>
             </div>
             <div className="p-1.5 text-center">
               <p className="text-xl sm:text-2xl font-extrabold text-royal-950">98.4%</p>

@@ -130,7 +130,7 @@ export default function JobsPage() {
                 type="text"
                 value={searchFilters.locationQuery}
                 onChange={(e) => updateSearchFilters({ locationQuery: e.target.value })}
-                placeholder="Filter by location (e.g. San Francisco, Remote)..."
+                placeholder="Filter by location (e.g. Bengaluru, London, US, Remote)..."
                 className="w-full bg-transparent text-sm text-royal-950 placeholder-royal-800/40 focus:outline-none font-medium"
               />
               {searchFilters.locationQuery && (

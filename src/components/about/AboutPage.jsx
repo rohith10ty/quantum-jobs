@@ -79,7 +79,7 @@ export default function AboutPage() {
               </div>
               <div className="w-px h-8 bg-cream-300" />
               <div>
-                <p className="text-2xl font-black text-royal-950">$215k</p>
+                <p className="text-2xl font-black text-royal-950">₹48 LPA</p>
                 <p className="text-xs text-royal-700">Median Staff Package</p>
               </div>
             </div>

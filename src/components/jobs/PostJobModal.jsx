@@ -10,8 +10,8 @@ export default function PostJobModal() {
   const [title, setTitle] = useState('');
   const [company, setCompany] = useState('');
   const [category, setCategory] = useState('software-development');
-  const [location, setLocation] = useState('Remote (Worldwide)');
-  const [salary, setSalary] = useState('$180,000 - $225,000');
+  const [location, setLocation] = useState('Bengaluru, Karnataka (Hybrid)');
+  const [salary, setSalary] = useState('₹35,00,000 - ₹55,00,000 LPA + Equity');
   const [jobType, setJobType] = useState('Full-time');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -126,7 +126,7 @@ export default function PostJobModal() {
                 type="text"
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
-                placeholder="e.g. San Francisco or Remote"
+                placeholder="e.g. Bengaluru, India or Remote"
                 className="w-full px-3 py-2 rounded-xl bg-cream-100/70 border border-cream-300 text-xs font-semibold text-royal-950 focus:outline-none focus:border-royal-800"
               />
             </div>
@@ -155,7 +155,7 @@ export default function PostJobModal() {
               type="text"
               value={salary}
               onChange={(e) => setSalary(e.target.value)}
-              placeholder="e.g. $180,000 - $220,000 + Equity"
+              placeholder="e.g. ₹35,00,000 - ₹55,00,000 LPA + Equity"
               className="w-full px-3 py-2 rounded-xl bg-cream-100/70 border border-cream-300 text-xs font-semibold text-royal-950 focus:outline-none focus:border-royal-800"
             />
           </div>

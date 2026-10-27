@@ -8,7 +8,7 @@ const ROHITH_NAIDU_USER = {
   name: 'Rohith Naidu',
   email: 'rohithnaidu.com',
   title: 'Senior Frontend Architect',
-  location: 'San Francisco, CA (Hybrid)',
+  location: 'Bengaluru, Karnataka, India (Hybrid)',
   avatar: '/profile.jpg',
   bio: 'Specializing in design systems, React 19, web performance, and modern executive software. 7+ years delivering world-class client architectures.',
   skills: ['React', 'TypeScript', 'Tailwind CSS', 'Design Systems', 'Performance', 'Next.js', 'GraphQL'],
@@ -16,7 +16,7 @@ const ROHITH_NAIDU_USER = {
   resumeSize: '2.4 MB',
   resumeDate: 'Updated Oct 2026',
   profileCompletion: 96,
-  phone: '+1 (555) 389-4021',
+  phone: '+91 98490 23812',
   portfolio: 'https://rohithnaidu.dev',
   github: 'https://github.com/rohith10ty',
   linkedin: 'https://linkedin.com/in/rohithnaidu'
@@ -24,21 +24,21 @@ const ROHITH_NAIDU_USER = {
 
 const DEFAULT_APPLIED = [
   {
-    jobId: 'job-1',
+    jobId: 'job-google-in',
     appliedAt: '2 days ago',
     timestamp: Date.now() - 172800000,
     status: 'Interview Scheduled',
     statusStep: 3,
-    notes: 'Executive video interview scheduled with Founder & Engineering Director.',
-    interviewDate: 'Tomorrow at 2:00 PM PST'
+    notes: 'Video interview scheduled with Bengaluru Engineering Director.',
+    interviewDate: 'Tomorrow at 2:00 PM IST'
   },
   {
-    jobId: 'job-3',
+    jobId: 'job-stackly-in',
     appliedAt: '5 days ago',
     timestamp: Date.now() - 432000000,
     status: 'In Review',
     statusStep: 2,
-    notes: 'Application passed preliminary review. Portfolio review in progress.',
+    notes: 'Application passed preliminary review. Architecture portfolio in progress.',
     interviewDate: null
   }
 ];
@@ -81,17 +81,17 @@ export function AppProvider({ children }) {
   // Saved Jobs - Sanitized strictly against mockJobs so invalid or deleted IDs never cause discrepancies
   const [savedJobIds, setSavedJobIds] = useState(() => {
     const saved = localStorage.getItem('quantum_saved_jobs');
-    let list = ['job-1', 'job-2'];
+    let list = ['job-apple-in', 'job-deloitte-in'];
     if (saved) {
       try {
         list = JSON.parse(saved);
       } catch (e) {
-        list = ['job-1', 'job-2'];
+        list = ['job-apple-in', 'job-deloitte-in'];
       }
     }
     // Filter only IDs that actually exist in mockJobs
     const valid = list.filter((id) => mockJobs.some((j) => j.id === id));
-    return valid;
+    return valid.length > 0 ? valid : ['job-apple-in', 'job-deloitte-in'];
   });
 
   // Applied Jobs
