@@ -78,10 +78,20 @@ export function AppProvider({ children }) {
     return ROHITH_NAIDU_USER;
   });
 
-  // Saved Jobs
+  // Saved Jobs - Sanitized strictly against mockJobs so invalid or deleted IDs never cause discrepancies
   const [savedJobIds, setSavedJobIds] = useState(() => {
     const saved = localStorage.getItem('quantum_saved_jobs');
-    return saved ? JSON.parse(saved) : ['job-1', 'job-2', 'job-5'];
+    let list = ['job-1', 'job-2'];
+    if (saved) {
+      try {
+        list = JSON.parse(saved);
+      } catch (e) {
+        list = ['job-1', 'job-2'];
+      }
+    }
+    // Filter only IDs that actually exist in mockJobs
+    const valid = list.filter((id) => mockJobs.some((j) => j.id === id));
+    return valid;
   });
 
   // Applied Jobs
@@ -111,8 +121,10 @@ export function AppProvider({ children }) {
     }
   }, [user]);
 
+  // Persist only valid saved job IDs
   useEffect(() => {
-    localStorage.setItem('quantum_saved_jobs', JSON.stringify(savedJobIds));
+    const validIds = savedJobIds.filter((id) => mockJobs.some((j) => j.id === id));
+    localStorage.setItem('quantum_saved_jobs', JSON.stringify(validIds));
   }, [savedJobIds]);
 
   useEffect(() => {
@@ -209,6 +221,9 @@ export function AppProvider({ children }) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  // Helper count for valid saved jobs
+  const validSavedCount = mockJobs.filter((j) => savedJobIds.includes(j.id)).length;
+
   return (
     <AppContext.Provider
       value={{
@@ -217,6 +232,7 @@ export function AppProvider({ children }) {
         user,
         setUser,
         savedJobIds,
+        validSavedCount,
         toggleSaveJob,
         appliedJobs,
         applyForJob,

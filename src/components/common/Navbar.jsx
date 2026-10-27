@@ -3,7 +3,6 @@ import { useApp } from '../../context/AppContext';
 import Logo from './Logo';
 import { 
   Bookmark, 
-  User, 
   Menu, 
   X, 
   Briefcase, 
@@ -16,7 +15,7 @@ export default function Navbar() {
   const { 
     currentView, 
     navigateTo, 
-    savedJobIds, 
+    validSavedCount, 
     user, 
     logoutUser, 
     setIsPostJobModalOpen 
@@ -104,7 +103,7 @@ export default function Navbar() {
           {/* Right Actions */}
           <div className="hidden md:flex items-center gap-3">
             
-            {/* Wishlist / Saved Jobs Button */}
+            {/* Wishlist / Saved Jobs Button - Exactly matches Wishlist page count */}
             <button
               onClick={() => handleNavClick('saved')}
               className={`relative flex items-center gap-2 px-3.5 py-2 text-sm font-medium rounded-full border transition-all cursor-pointer ${
@@ -116,14 +115,14 @@ export default function Navbar() {
             >
               <Bookmark className="w-4 h-4 text-royal-800" />
               <span className="hidden lg:inline text-xs font-semibold">Wishlist</span>
-              {savedJobIds.length > 0 && (
+              {validSavedCount > 0 && (
                 <span className="inline-flex items-center justify-center px-1.5 py-0.2 text-[11px] font-bold bg-royal-800 text-cream-50 rounded-full">
-                  {savedJobIds.length}
+                  {validSavedCount}
                 </span>
               )}
             </button>
 
-            {/* Candidate Profile: Rohith Naidu (Closes when clicking outside) */}
+            {/* Candidate Profile: Rohith Naidu */}
             {user && (
               <div className="relative" ref={dropdownRef}>
                 <button
@@ -165,7 +164,7 @@ export default function Navbar() {
                       className="w-full flex items-center gap-2.5 px-4 py-2 text-xs font-medium text-royal-900 hover:bg-royal-100/60 transition-colors text-left cursor-pointer"
                     >
                       <Bookmark className="w-4 h-4 text-royal-800" />
-                      Saved Jobs ({savedJobIds.length})
+                      Saved Jobs ({validSavedCount})
                     </button>
 
                     <div className="border-t border-cream-200 my-1" />
@@ -185,7 +184,7 @@ export default function Navbar() {
               </div>
             )}
 
-            {/* Post a Job button (Opens sleek, properly-sized PostJobModal) */}
+            {/* Post a Job button */}
             <button
               onClick={() => setIsPostJobModalOpen(true)}
               className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold rounded-full bg-cream-200/80 hover:bg-royal-800 hover:text-cream-50 text-royal-900 border border-cream-300 transition-all cursor-pointer shadow-2xs"
@@ -203,7 +202,7 @@ export default function Navbar() {
               aria-label="Wishlist"
             >
               <Bookmark className="w-5 h-5 text-royal-800" />
-              {savedJobIds.length > 0 && (
+              {validSavedCount > 0 && (
                 <span className="absolute top-1 right-1 w-2 h-2 bg-royal-800 rounded-full"></span>
               )}
             </button>
