@@ -3,23 +3,23 @@ import { mockJobs } from '../data/mockJobs';
 
 const AppContext = createContext();
 
-const DEFAULT_DEMO_USER = {
-  id: 'usr_demo_1',
-  name: 'Alex Morgan',
-  email: 'alex.morgan@quantum.dev',
+const ROHITH_NAIDU_USER = {
+  id: 'usr_rohith_naidu',
+  name: 'Rohith Naidu',
+  email: 'rohithnaidu.com',
   title: 'Senior Frontend Architect',
-  location: 'San Francisco, CA',
+  location: 'San Francisco, CA (Hybrid)',
   avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=256&q=80',
-  bio: 'Specializing in design systems, React performance, and modern web ergonomics. 7+ years delivering world-class client architectures.',
+  bio: 'Specializing in design systems, React 19, web performance, and modern executive software. 7+ years delivering world-class client architectures.',
   skills: ['React', 'TypeScript', 'Tailwind CSS', 'Design Systems', 'Performance', 'Next.js', 'GraphQL'],
-  resumeName: 'Alex_Morgan_Executive_Resume.pdf',
+  resumeName: 'Rohith_Naidu_Senior_Architect_CV.pdf',
   resumeSize: '2.4 MB',
   resumeDate: 'Updated Oct 2026',
-  profileCompletion: 92,
+  profileCompletion: 96,
   phone: '+1 (555) 389-4021',
-  portfolio: 'https://alexmorgan.design',
-  github: 'https://github.com/alexmorgan-dev',
-  linkedin: 'https://linkedin.com/in/alexmorgan-arch'
+  portfolio: 'https://rohithnaidu.dev',
+  github: 'https://github.com/rohith10ty',
+  linkedin: 'https://linkedin.com/in/rohithnaidu'
 };
 
 const DEFAULT_APPLIED = [
@@ -28,8 +28,8 @@ const DEFAULT_APPLIED = [
     appliedAt: '2 days ago',
     timestamp: Date.now() - 172800000,
     status: 'Interview Scheduled',
-    statusStep: 3, // 1: Applied, 2: Under Review, 3: Interview, 4: Offer
-    notes: 'Video interview scheduled with Founder & Engineering Director.',
+    statusStep: 3,
+    notes: 'Executive video interview scheduled with Founder & Engineering Director.',
     interviewDate: 'Tomorrow at 2:00 PM PST'
   },
   {
@@ -38,7 +38,7 @@ const DEFAULT_APPLIED = [
     timestamp: Date.now() - 432000000,
     status: 'In Review',
     statusStep: 2,
-    notes: 'Application passed preliminary review. Awaiting design portfolio feedback.',
+    notes: 'Application passed preliminary review. Portfolio review in progress.',
     interviewDate: null
   }
 ];
@@ -55,10 +55,15 @@ const INITIAL_FILTERS = {
 };
 
 export function AppProvider({ children }) {
+  // Authentication gate: on starting page, ask to login unless session active
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    return sessionStorage.getItem('quantum_auth_session') === 'true';
+  });
+
   // User state
   const [user, setUser] = useState(() => {
     const saved = localStorage.getItem('quantum_user');
-    return saved ? JSON.parse(saved) : DEFAULT_DEMO_USER;
+    return saved ? JSON.parse(saved) : ROHITH_NAIDU_USER;
   });
 
   // Saved Jobs
@@ -74,13 +79,12 @@ export function AppProvider({ children }) {
   });
 
   // Navigation
-  const [currentView, setCurrentView] = useState('home'); // 'home' | 'jobs' | 'companies' | 'about' | 'saved' | 'dashboard'
+  const [currentView, setCurrentView] = useState('home');
   
   // Modals
   const [selectedJobForDetails, setSelectedJobForDetails] = useState(null);
   const [selectedJobForApply, setSelectedJobForApply] = useState(null);
-  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
-  const [authModalTab, setAuthModalTab] = useState('login'); // 'login' | 'signup'
+  const [isPostJobModalOpen, setIsPostJobModalOpen] = useState(false);
 
   // Search & Filter state
   const [searchFilters, setSearchFilters] = useState(INITIAL_FILTERS);
@@ -88,12 +92,10 @@ export function AppProvider({ children }) {
   // Toasts
   const [toasts, setToasts] = useState([]);
 
-  // Persistence effects
+  // Persistence
   useEffect(() => {
     if (user) {
       localStorage.setItem('quantum_user', JSON.stringify(user));
-    } else {
-      localStorage.removeItem('quantum_user');
     }
   }, [user]);
 
@@ -117,16 +119,32 @@ export function AppProvider({ children }) {
     setToasts((prev) => prev.filter((t) => t.id !== id));
   };
 
+  const loginWithEmail = (enteredEmail = 'rohithnaidu.com') => {
+    const updatedUser = {
+      ...ROHITH_NAIDU_USER,
+      email: enteredEmail
+    };
+    setUser(updatedUser);
+    setIsAuthenticated(true);
+    sessionStorage.setItem('quantum_auth_session', 'true');
+  };
+
+  const logoutUser = () => {
+    setIsAuthenticated(false);
+    sessionStorage.removeItem('quantum_auth_session');
+    addToast('Logged out. See you soon!', 'info');
+  };
+
   const toggleSaveJob = (jobId) => {
     const job = mockJobs.find((j) => j.id === jobId);
     const jobTitle = job ? job.title : 'Job';
 
     if (savedJobIds.includes(jobId)) {
       setSavedJobIds((prev) => prev.filter((id) => id !== jobId));
-      addToast(`Removed "${jobTitle}" from saved jobs`, 'info');
+      addToast(`Removed "${jobTitle}" from wishlist`, 'info');
     } else {
       setSavedJobIds((prev) => [...prev, jobId]);
-      addToast(`Saved "${jobTitle}" to your wishlist`, 'success');
+      addToast(`Saved "${jobTitle}" to wishlist`, 'success');
     }
   };
 
@@ -135,7 +153,7 @@ export function AppProvider({ children }) {
     const existing = appliedJobs.find((a) => a.jobId === jobId);
 
     if (existing) {
-      addToast(`You have already applied for ${job ? job.title : 'this role'}. Check your Dashboard.`, 'warning');
+      addToast(`You have already applied for ${job ? job.title : 'this role'}.`, 'warning');
       return false;
     }
 
@@ -151,7 +169,7 @@ export function AppProvider({ children }) {
     };
 
     setAppliedJobs((prev) => [newApplication, ...prev]);
-    addToast(`Successfully applied to ${job ? job.company : 'Company'} for ${job ? job.title : 'Role'}!`, 'success', 4500);
+    addToast(`Successfully applied to ${job ? job.company : 'Company'}!`, 'success', 4500);
     return true;
   };
 
@@ -178,36 +196,11 @@ export function AppProvider({ children }) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const loginDemoUser = (role = 'candidate') => {
-    if (role === 'candidate') {
-      setUser(DEFAULT_DEMO_USER);
-      addToast('Logged in as Alex Morgan (Senior Candidate)', 'success');
-    } else {
-      setUser({
-        id: 'usr_recruiter_1',
-        name: 'Elena Rostova',
-        email: 'elena@quantum-talent.com',
-        title: 'VP of Global Talent @ Horizon',
-        location: 'New York, NY',
-        avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=256&q=80',
-        bio: 'Connecting exceptional software executives and AI pioneers with tier-1 ventures.',
-        skills: ['Executive Recruiting', 'AI Talent Mapping', 'Compensation Design'],
-        profileCompletion: 100,
-        phone: '+1 (555) 789-1029'
-      });
-      addToast('Logged in as Elena Rostova (Hiring Partner)', 'success');
-    }
-    setIsAuthModalOpen(false);
-  };
-
-  const logoutUser = () => {
-    setUser(null);
-    addToast('Logged out successfully', 'info');
-  };
-
   return (
     <AppContext.Provider
       value={{
+        isAuthenticated,
+        setIsAuthenticated,
         user,
         setUser,
         savedJobIds,
@@ -221,10 +214,8 @@ export function AppProvider({ children }) {
         setSelectedJobForDetails,
         selectedJobForApply,
         setSelectedJobForApply,
-        isAuthModalOpen,
-        setIsAuthModalOpen,
-        authModalTab,
-        setAuthModalTab,
+        isPostJobModalOpen,
+        setIsPostJobModalOpen,
         searchFilters,
         setSearchFilters,
         updateSearchFilters,
@@ -232,7 +223,7 @@ export function AppProvider({ children }) {
         toasts,
         addToast,
         removeToast,
-        loginDemoUser,
+        loginWithEmail,
         logoutUser
       }}
     >

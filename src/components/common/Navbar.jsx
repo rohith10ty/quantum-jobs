@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useApp } from '../../context/AppContext';
 import Logo from './Logo';
 import { 
@@ -7,11 +7,7 @@ import {
   Menu, 
   X, 
   Briefcase, 
-  Building2, 
-  Compass, 
-  Sparkles, 
   LogOut, 
-  CheckCircle,
   PlusCircle,
   ChevronDown
 } from 'lucide-react';
@@ -23,13 +19,30 @@ export default function Navbar() {
     savedJobIds, 
     user, 
     logoutUser, 
-    setIsAuthModalOpen, 
-    setAuthModalTab 
+    setIsPostJobModalOpen 
   } = useApp();
 
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
+
+  const dropdownRef = useRef(null);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setUserDropdownOpen(false);
+      }
+    };
+
+    if (userDropdownOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [userDropdownOpen]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -63,7 +76,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           
-          {/* Logo */}
+          {/* Logo with ⬢ Symbol in Royal Blue */}
           <div onClick={() => handleNavClick('home')}>
             <Logo size="md" showTagline={false} />
           </div>
@@ -110,9 +123,9 @@ export default function Navbar() {
               )}
             </button>
 
-            {/* Candidate Profile / Dashboard Link */}
-            {user ? (
-              <div className="relative">
+            {/* Candidate Profile: Rohith Naidu (Closes when clicking outside) */}
+            {user && (
+              <div className="relative" ref={dropdownRef}>
                 <button
                   onClick={() => setUserDropdownOpen(!userDropdownOpen)}
                   className="flex items-center gap-2.5 pl-2 pr-3 py-1.5 rounded-full border border-cream-300 hover:border-royal-400 bg-cream-50/90 transition-all cursor-pointer"
@@ -131,17 +144,17 @@ export default function Navbar() {
                   <ChevronDown className="w-3.5 h-3.5 text-royal-800 ml-0.5" />
                 </button>
 
-                {/* Dropdown Menu */}
+                {/* Dropdown Menu - Closes when clicking anywhere outside */}
                 {userDropdownOpen && (
                   <div className="absolute right-0 mt-2 w-56 bg-cream-50 rounded-2xl border border-cream-300 shadow-xl py-2 z-50 animate-in fade-in zoom-in-95 duration-150">
                     <div className="px-4 py-2 border-b border-cream-200">
-                      <p className="text-xs font-semibold text-royal-900">{user.name}</p>
+                      <p className="text-xs font-bold text-royal-950">{user.name}</p>
                       <p className="text-[11px] text-royal-700/70 truncate">{user.email}</p>
                     </div>
 
                     <button
                       onClick={() => handleNavClick('dashboard')}
-                      className="w-full flex items-center gap-2.5 px-4 py-2 text-xs font-medium text-royal-900 hover:bg-royal-100/60 transition-colors text-left"
+                      className="w-full flex items-center gap-2.5 px-4 py-2 text-xs font-medium text-royal-900 hover:bg-royal-100/60 transition-colors text-left cursor-pointer"
                     >
                       <Briefcase className="w-4 h-4 text-royal-800" />
                       Candidate Dashboard
@@ -149,7 +162,7 @@ export default function Navbar() {
 
                     <button
                       onClick={() => handleNavClick('saved')}
-                      className="w-full flex items-center gap-2.5 px-4 py-2 text-xs font-medium text-royal-900 hover:bg-royal-100/60 transition-colors text-left"
+                      className="w-full flex items-center gap-2.5 px-4 py-2 text-xs font-medium text-royal-900 hover:bg-royal-100/60 transition-colors text-left cursor-pointer"
                     >
                       <Bookmark className="w-4 h-4 text-royal-800" />
                       Saved Jobs ({savedJobIds.length})
@@ -162,7 +175,7 @@ export default function Navbar() {
                         logoutUser();
                         setUserDropdownOpen(false);
                       }}
-                      className="w-full flex items-center gap-2.5 px-4 py-2 text-xs font-medium text-rose-700 hover:bg-rose-50 transition-colors text-left"
+                      className="w-full flex items-center gap-2.5 px-4 py-2 text-xs font-medium text-rose-700 hover:bg-rose-50 transition-colors text-left cursor-pointer"
                     >
                       <LogOut className="w-4 h-4" />
                       Sign Out
@@ -170,36 +183,12 @@ export default function Navbar() {
                   </div>
                 )}
               </div>
-            ) : (
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={() => {
-                    setAuthModalTab('login');
-                    setIsAuthModalOpen(true);
-                  }}
-                  className="px-4 py-2 text-sm font-semibold text-royal-900 hover:text-royal-800 transition-colors cursor-pointer"
-                >
-                  Log In
-                </button>
-                <button
-                  onClick={() => {
-                    setAuthModalTab('signup');
-                    setIsAuthModalOpen(true);
-                  }}
-                  className="px-4 py-2 text-sm font-semibold text-cream-50 bg-royal-800 hover:bg-royal-900 rounded-full transition-all shadow-xs hover:shadow cursor-pointer"
-                >
-                  Join Quantum
-                </button>
-              </div>
             )}
 
-            {/* Post a Job button (Employer CTA) */}
+            {/* Post a Job button (Opens sleek, properly-sized PostJobModal) */}
             <button
-              onClick={() => {
-                setAuthModalTab('signup');
-                setIsAuthModalOpen(true);
-              }}
-              className="hidden xl:inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold rounded-full bg-cream-200/80 hover:bg-royal-800 hover:text-cream-50 text-royal-900 border border-cream-300 transition-all cursor-pointer"
+              onClick={() => setIsPostJobModalOpen(true)}
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold rounded-full bg-cream-200/80 hover:bg-royal-800 hover:text-cream-50 text-royal-900 border border-cream-300 transition-all cursor-pointer shadow-2xs"
             >
               <PlusCircle className="w-3.5 h-3.5" />
               <span>Post a Job</span>
@@ -257,9 +246,18 @@ export default function Navbar() {
                 >
                   <div className="flex items-center gap-2.5">
                     <img src={user.avatar} alt={user.name} className="w-7 h-7 rounded-full object-cover" />
-                    <span>Candidate Dashboard</span>
+                    <span>Rohith's Dashboard</span>
                   </div>
                   <span className="text-xs text-royal-700 font-semibold">View</span>
+                </button>
+                <button
+                  onClick={() => {
+                    setIsPostJobModalOpen(true);
+                    setMobileMenuOpen(false);
+                  }}
+                  className="w-full py-2.5 rounded-xl bg-royal-800 text-cream-50 text-xs font-bold"
+                >
+                  Post a Job
                 </button>
                 <button
                   onClick={() => {
@@ -271,30 +269,7 @@ export default function Navbar() {
                   Sign Out
                 </button>
               </>
-            ) : (
-              <div className="grid grid-cols-2 gap-2 pt-2">
-                <button
-                  onClick={() => {
-                    setAuthModalTab('login');
-                    setIsAuthModalOpen(true);
-                    setMobileMenuOpen(false);
-                  }}
-                  className="w-full py-2.5 rounded-xl border border-cream-300 font-semibold text-sm text-royal-900"
-                >
-                  Sign In
-                </button>
-                <button
-                  onClick={() => {
-                    setAuthModalTab('signup');
-                    setIsAuthModalOpen(true);
-                    setMobileMenuOpen(false);
-                  }}
-                  className="w-full py-2.5 rounded-xl bg-royal-800 text-cream-50 font-semibold text-sm shadow-sm"
-                >
-                  Join Quantum
-                </button>
-              </div>
-            )}
+            ) : null}
           </div>
         </div>
       )}

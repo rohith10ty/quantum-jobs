@@ -25,18 +25,29 @@ import CandidateDashboard from './components/dashboard/CandidateDashboard';
 // Modals
 import JobDetailsModal from './components/jobs/JobDetailsModal';
 import ApplyModal from './components/jobs/ApplyModal';
-import AuthModal from './components/auth/AuthModal';
+import PostJobModal from './components/jobs/PostJobModal';
+import GlassyLoginModal from './components/auth/GlassyLoginModal';
 
 function MainLayout() {
-  const { currentView } = useApp();
+  const { currentView, isAuthenticated } = useApp();
 
   // Initialize Lenis smooth scroll
   useLenis();
 
+  // Starting page: ask to login with the Audix #132 Glassy Card unless logged in
+  if (!isAuthenticated) {
+    return (
+      <>
+        <GlassyLoginModal />
+        <Toast />
+      </>
+    );
+  }
+
   return (
     <div className="min-h-screen flex flex-col bg-cream-100 text-royal-950 font-sans selection:bg-royal-800 selection:text-cream-50">
       
-      {/* Sticky Navbar */}
+      {/* Sticky Navbar with ⬢ Logo & Rohith Naidu Profile */}
       <Navbar />
 
       {/* Main Content Router */}
@@ -59,13 +70,13 @@ function MainLayout() {
         {currentView === 'dashboard' && <CandidateDashboard />}
       </main>
 
-      {/* Global Footer */}
+      {/* Global Footer with Tight Bottom Padding */}
       <Footer />
 
       {/* Global Interactive Modals */}
       <JobDetailsModal />
       <ApplyModal />
-      <AuthModal />
+      <PostJobModal />
 
       {/* Toast Notifications */}
       <Toast />

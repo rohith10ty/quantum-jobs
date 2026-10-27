@@ -16,10 +16,8 @@ import {
   Globe, 
   Edit3, 
   Sparkles, 
-  ExternalLink,
   ShieldCheck,
-  Download,
-  Plus
+  Download
 } from 'lucide-react';
 
 export default function CandidateDashboard() {
@@ -33,7 +31,7 @@ export default function CandidateDashboard() {
     addToast 
   } = useApp();
 
-  const [activeTab, setActiveTab] = useState('applied'); // 'applied' | 'saved' | 'profile'
+  const [activeTab, setActiveTab] = useState('applied');
   const [isEditingProfile, setIsEditingProfile] = useState(false);
   const [editedTitle, setEditedTitle] = useState(user?.title || '');
   const [editedBio, setEditedBio] = useState(user?.bio || '');
@@ -46,14 +44,13 @@ export default function CandidateDashboard() {
           <User className="w-12 h-12 text-royal-800 mx-auto" />
           <h2 className="text-xl font-bold text-royal-950">Candidate Account Required</h2>
           <p className="text-xs text-royal-800/70">
-            Please log in or sign up to access your Candidate Dashboard and monitor your applications.
+            Please log in to access your Candidate Dashboard and monitor your applications.
           </p>
         </div>
       </div>
     );
   }
 
-  // Get full job data for applied applications
   const applicationList = appliedJobs.map((app) => {
     const job = mockJobs.find((j) => j.id === app.jobId);
     return {
@@ -94,8 +91,8 @@ export default function CandidateDashboard() {
   };
 
   return (
-    <div className="py-12 bg-cream-100 min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+    <div className="py-10 bg-cream-100 min-h-screen">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
         
         {/* Top Profile Card */}
         <div className="bg-cream-50 rounded-3xl border border-cream-300 p-6 sm:p-8 shadow-sm">
@@ -261,7 +258,7 @@ export default function CandidateDashboard() {
               <div className="pt-1 flex items-center gap-2">
                 <button
                   onClick={() => addToast('Downloading verified resume snapshot...', 'info')}
-                  className="flex-1 px-3 py-2 rounded-xl bg-cream-50 hover:bg-cream-200 border border-cream-300 text-royal-900 font-bold text-xs flex items-center justify-center gap-1.5 transition-colors"
+                  className="flex-1 px-3 py-2 rounded-xl bg-cream-50 hover:bg-cream-200 border border-cream-300 text-royal-900 font-bold text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
                 >
                   <Download className="w-3.5 h-3.5" />
                   <span>Download</span>
@@ -270,7 +267,7 @@ export default function CandidateDashboard() {
                   href={user.portfolio}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex-1 px-3 py-2 rounded-xl bg-royal-800 hover:bg-royal-900 text-cream-50 font-bold text-xs flex items-center justify-center gap-1.5 transition-colors"
+                  className="flex-1 px-3 py-2 rounded-xl bg-royal-800 hover:bg-royal-900 text-cream-50 font-bold text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
                 >
                   <Globe className="w-3.5 h-3.5" />
                   <span>Portfolio</span>
@@ -286,7 +283,7 @@ export default function CandidateDashboard() {
         <div className="flex items-center gap-3 border-b border-cream-300 pb-2">
           <button
             onClick={() => setActiveTab('applied')}
-            className={`px-5 py-2.5 rounded-full text-xs font-bold transition-all cursor-pointer flex items-center gap-2 ${
+            className={`px-5 py-2 rounded-full text-xs font-bold transition-all cursor-pointer flex items-center gap-2 ${
               activeTab === 'applied'
                 ? 'bg-royal-800 text-cream-50 shadow-xs'
                 : 'bg-cream-50 text-royal-900 hover:bg-cream-200'
@@ -298,7 +295,7 @@ export default function CandidateDashboard() {
 
           <button
             onClick={() => setActiveTab('saved')}
-            className={`px-5 py-2.5 rounded-full text-xs font-bold transition-all cursor-pointer flex items-center gap-2 ${
+            className={`px-5 py-2 rounded-full text-xs font-bold transition-all cursor-pointer flex items-center gap-2 ${
               activeTab === 'saved'
                 ? 'bg-royal-800 text-cream-50 shadow-xs'
                 : 'bg-cream-50 text-royal-900 hover:bg-cream-200'
@@ -317,7 +314,6 @@ export default function CandidateDashboard() {
                 const job = app.job;
                 if (!job) return null;
 
-                // Status styling
                 let statusBadge = 'bg-royal-100 text-royal-900 border-royal-300';
                 if (app.status.includes('Interview')) {
                   statusBadge = 'bg-amber-100 text-amber-950 border-amber-300';
@@ -328,7 +324,7 @@ export default function CandidateDashboard() {
                 return (
                   <div
                     key={idx}
-                    className="bg-cream-50 rounded-2xl border border-cream-300 p-6 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:shadow-md transition-shadow"
+                    className="bg-cream-50 rounded-2xl border border-cream-300 p-5 flex flex-col md:flex-row md:items-center justify-between gap-5 hover:shadow-md transition-shadow"
                   >
                     <div className="flex items-start gap-4">
                       <div className={`w-12 h-12 rounded-xl flex items-center justify-center font-black text-sm tracking-wider ${job.badgeColor}`}>
@@ -342,7 +338,7 @@ export default function CandidateDashboard() {
                         </div>
                         <h3
                           onClick={() => setSelectedJobForDetails(job)}
-                          className="text-lg font-bold text-royal-950 hover:text-royal-800 cursor-pointer"
+                          className="text-base font-bold text-royal-950 hover:text-royal-800 cursor-pointer"
                         >
                           {job.title}
                         </h3>
@@ -370,7 +366,7 @@ export default function CandidateDashboard() {
                       </span>
                       <button
                         onClick={() => setSelectedJobForDetails(job)}
-                        className="px-4 py-2 rounded-xl bg-cream-100 hover:bg-cream-200 text-royal-900 font-bold text-xs border border-cream-300 transition-colors"
+                        className="px-4 py-2 rounded-xl bg-cream-100 hover:bg-cream-200 text-royal-900 font-bold text-xs border border-cream-300 transition-colors cursor-pointer"
                       >
                         View Job Details
                       </button>
@@ -385,7 +381,7 @@ export default function CandidateDashboard() {
                 <p className="text-xs text-royal-800/70">Explore open opportunities and submit your direct application.</p>
                 <button
                   onClick={() => navigateTo('jobs')}
-                  className="px-5 py-2.5 rounded-full bg-royal-800 text-cream-50 font-bold text-xs"
+                  className="px-5 py-2 rounded-full bg-royal-800 text-cream-50 font-bold text-xs cursor-pointer"
                 >
                   Browse Roles
                 </button>
@@ -409,7 +405,7 @@ export default function CandidateDashboard() {
                 <h3 className="text-base font-bold text-royal-950">No saved roles in your wishlist</h3>
                 <button
                   onClick={() => navigateTo('jobs')}
-                  className="px-5 py-2.5 rounded-full bg-royal-800 text-cream-50 font-bold text-xs"
+                  className="px-5 py-2 rounded-full bg-royal-800 text-cream-50 font-bold text-xs cursor-pointer"
                 >
                   Browse Roles
                 </button>
